@@ -41,7 +41,7 @@ const network = dataSource.network()
 export function getOceanAddress(): string {
   // switch is not working for some reason
   if (network == 'ropsten') return '0x5e8dcb2afa23844bcc311b00ad1a0c30025aade9'
-  if (network == 'rinkeby') return '0x8967bcf84170c91b0d24d4302c2376283b0b3a07'
+  if (network == 'rinkeby') return '0xB71cE5462677e24290e9003e2FA5FeDb7f5E4145'
   if (network == 'polygon') return '0x282d8efce846a88b159800bd4130ad77443fa1a1'
   if (network == 'moonbeamalpha')
     return '0xf6410bf5d773c7a41ebff972f38e7463fa242477'
@@ -57,7 +57,7 @@ export function getOceanAddress(): string {
     return '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
   if (network == 'moonriver')
     return '0x99c409e5f62e4bd2ac142f17cafb6810b8f0baae'
-  return '0x967da4048cd07ab37855c090aaf366e4ce1b9f48'
+  return '0xf3dcbc6d72a4e1892f7917b7c43b74131df8480e'
 }
 
 export const OCEAN: string = getOceanAddress()

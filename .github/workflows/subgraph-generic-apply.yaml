@@ -42,7 +42,7 @@ on:
       subgraph_start_block_rinkeby:
         description: Rinkeby subgraph start block
         required: true
-        default: 10882423
+        default: 10762423
 
 
 env:
@@ -210,7 +210,7 @@ jobs:
             --data '{"jsonrpc": "2.0", "id": "2", "method": "subgraph_create", "params": {"name": "${{ env.SUBGRAPH_NAME }}"}}'
 
             # Check output
-            grep 'jsonrpc' ${OUTPUT}
+            grep '{"jsonrpc":"2.0","result":{"id":"' ${OUTPUT}
             if [[ $? -eq 0 ]]; then
               echo "Subgraph created successfully"
             else
@@ -231,7 +231,7 @@ jobs:
             --data '{"jsonrpc": "2.0", "id": "2", "method": "subgraph_deploy", "params": {"name": "${{ env.SUBGRAPH_NAME }}", "ipfs_hash": "${{ env.IPFS_HASH }}"}}'
 
             # Check output
-            grep 'jsonrpc' ${OUTPUT}
+            grep '{"jsonrpc":"2.0","result":{"playground":"' ${OUTPUT}
             if [[ $? -eq 0 ]]; then
               echo "Subgraph deployed successfully"
             else

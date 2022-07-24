@@ -143,10 +143,10 @@ jobs:
       matrix:
         chain: ${{ fromJSON(needs.chains.outputs.list) }}
     steps:
-      - name: Subgraph - Use Node.js 12
+      - name: Subgraph - Use Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 16
 
       - name: Subgraph - Checkout
         uses: actions/checkout@v3
@@ -187,14 +187,14 @@ jobs:
           sed -i 's/startBlock:.*/startBlock: ${{ env.SUBGRAPH_START_BLOCK }}/' ${{ env.SUBGRAPH_MANIFEST }}
 
       - name: Subgraph - Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Subgraph - Generates AssemblyScript
-        run: yarn codegen
+        run: npm run codegen
 
       - name: Subgraph - Build
         run: |
-          yarn graph build --ipfs https://${{ env.IPFS_ENDPOINT }} ${{ env.SUBGRAPH_MANIFEST }} >build.log
+          npm exec -- graph build --ipfs https://${{ env.IPFS_ENDPOINT }} ${{ env.SUBGRAPH_MANIFEST }} >build.log
           echo "IPFS_HASH=$(awk -F': ' '/Build completed/ {print $2}' build.log)" >> $GITHUB_ENV
 
       - name: Subgraph - Graph create

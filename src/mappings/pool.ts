@@ -173,7 +173,7 @@ export function handleSetup(event: LOG_CALL): void {
   const swapFee = data.slice(394) // (74+(5*64), END)
 
   if (baseTokenAddress != OCEAN) {
-    log.error('baseTokenAddress is not Ocean ({})', [OCEAN])
+    log.error('baseTokenAddress is not Ocean, but is {}', [baseTokenAddress]) 
     return
   }
   const poolTokenId = poolId.concat('-').concat(baseTokenAddress)
